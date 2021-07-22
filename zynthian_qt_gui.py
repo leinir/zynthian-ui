@@ -223,7 +223,7 @@ class zynthian_gui_status_data(QObject):
 
 class zynthian_gui(QObject):
 
-	screens_sequence = ("main","layer","bank","preset","control")
+	screens_sequence = ("main","layer","bank","preset","control", "layer_effects")
 
 	note2cuia = {
 		"0": "POWER_OFF",
@@ -587,7 +587,7 @@ class zynthian_gui(QObject):
 			else:
 				screen = "main"
 		logging.error(screen)
-		traceback.print_stack(None, 8)
+
 		if screen=="layer" or screen=="bank"  or screen=="preset"  or screen=="control" :
 			self.restore_curlayer()
 
@@ -1092,17 +1092,17 @@ class zynthian_gui(QObject):
 					self.modal_screen_next = None
 
 		elif cuia == "LAYER_ONE":
-			self.screens['layer'].activate_layer(0)
+			self.screens['layer'].activate_midican_layer(0)
 		elif cuia == "LAYER_TWO":
-			self.screens['layer'].activate_layer(1)
+			self.screens['layer'].activate_midican_layer(1)
 		elif cuia == "LAYER_THREE":
-			self.screens['layer'].activate_layer(2)
+			self.screens['layer'].activate_midican_layer(2)
 		elif cuia == "LAYER_FOUR":
-			self.screens['layer'].activate_layer(3)
+			self.screens['layer'].activate_midican_layer(3)
 		elif cuia == "LAYER_FIVE":
-			self.screens['layer'].activate_layer(4)
+			self.screens['layer'].activate_midican_layer(4)
 		elif cuia == "LAYER_SIX":
-			self.screens['layer'].activate_layer(5)
+			self.screens['layer'].activate_midican_layer(5)
 
 
 

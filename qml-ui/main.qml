@@ -72,27 +72,27 @@ Kirigami.AbstractApplicationWindow {
                     property list<Kirigami.Action> intActions: [
                         Kirigami.Action {
                             text: "1#"
-                            onTriggered: zynthian.layer.activate_layer(0)
+                            onTriggered: zynthian.layer.activate_midican_layer(0)
                         },
                         Kirigami.Action {
                             text: "2#"
-                            onTriggered: zynthian.layer.activate_layer(1)
+                            onTriggered: zynthian.layer.activate_midican_layer(1)
                         },
                         Kirigami.Action {
                             text: "3#"
-                            onTriggered: zynthian.layer.activate_layer(2)
+                            onTriggered: zynthian.layer.activate_midican_layer(2)
                         },
                         Kirigami.Action {
                             text: "4#"
-                            onTriggered: zynthian.layer.activate_layer(3)
+                            onTriggered: zynthian.layer.activate_midican_layer(3)
                         },
                         Kirigami.Action {
                             text: "5#"
-                            onTriggered: zynthian.layer.activate_layer(4)
+                            onTriggered: zynthian.layer.activate_midican_layer(4)
                         },
                         Kirigami.Action {
                             text: "6#"
-                            onTriggered: zynthian.layer.activate_layer(5)
+                            onTriggered: zynthian.layer.activate_midican_layer(5)
                         }
                     ]
                     actions: intActions
@@ -162,11 +162,13 @@ Kirigami.AbstractApplicationWindow {
             contentItem: RowLayout {
                 spacing: Kirigami.Units.smallSpacing
                 QQC2.Button {
+                    implicitWidth: 1
                     Layout.fillWidth: true
                     text: qsTr("No")
                     onClicked: confirmDialog.reject()
                 }
                 QQC2.Button {
+                    implicitWidth: 1
                     Layout.fillWidth: true
                     text: qsTr("Yes")
                     onClicked: confirmDialog.accept()
