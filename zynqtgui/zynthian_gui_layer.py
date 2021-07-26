@@ -100,6 +100,9 @@ class zynthian_gui_layer(zynthian_gui_selector):
 		self.list_data.append((None,len(self.list_data),""))
 		self.list_data.append(('ALL_OFF',len(self.list_data),"PANIC! All Notes Off"))
 
+		if 'fixed_layers' in self.zyngui.screens:
+			self.zyngui.screens['fixed_layers'].fill_list()
+
 		super().fill_list()
 
 	def get_effective_count(self):
@@ -372,6 +375,7 @@ class zynthian_gui_layer(zynthian_gui_selector):
 	def add_layer_midich(self, midich, select=True):
 		if self.add_layer_eng:
 			zyngine = self.zyngui.screens['engine'].start_engine(self.add_layer_eng)
+			self.add_layer_eng = None
 
 			if not self.layer_index_replace_engine == None and len(self.layers) > self.index:
 				layer = self.layers[self.layer_index_replace_engine]
@@ -414,6 +418,9 @@ class zynthian_gui_layer(zynthian_gui_selector):
 					logging.error(e)
 					self.zyngui.show_screen('layer')
 		self.layer_index_replace_engine = None
+		self.zyngui.show_screen('layer')
+		self.zyngui.screens['layer'].select_action(self.zyngui.screens['layer'].index)
+		self.zyngui.screens['bank'].select_action(0)
 
 
 	def remove_layer(self, i, stop_unused_engines=True):
@@ -1406,7 +1413,7 @@ class zynthian_gui_layer(zynthian_gui_selector):
 		if self.zyngui.curlayer is None:
 			self.select_path_element = "Layers"
 		else:
-			self.select_path_element = "{}#".format(self.zyngui.curlayer.midi_chan + 1)
+			self.select_path_element = str(self.zyngui.curlayer.midi_chan + 1)
 		super().set_select_path()
 
 

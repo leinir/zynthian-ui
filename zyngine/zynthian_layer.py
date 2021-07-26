@@ -199,10 +199,7 @@ class zynthian_layer:
 
 		elif self.bank_info:
 			try:
-				for i, preset in enumerate(self.engine.get_preset_list(self.bank_info)):
-					if self.engine.is_preset_fav(preset):
-						preset[2] = "*" + preset[2]
-					preset[2] = "{} - ".format(i+1) + preset[2]
+				for preset in self.engine.get_preset_list(self.bank_info):
 					preset_list.append(preset)
 			except:
 				pass
@@ -230,8 +227,6 @@ class zynthian_layer:
 			preset_name = self.preset_list[i][2]
 
 			if preset_id in self.engine.preset_favs:
-				if preset_name[0]=='*':
-					preset_name=preset_name[1:]
 				bank_name = self.engine.preset_favs[preset_id][0][2]
 				if bank_name!=self.bank_name:
 					self.set_bank_by_name(bank_name)
